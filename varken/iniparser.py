@@ -153,7 +153,7 @@ class INIParser(object):
             # Use INFLUX version 2
             try:
                 url = self.url_check(env.get('VRKN_INFLUXDB2_URL', self.config.get('influx2', 'url')),
-                                     section='influx2')
+                                     section='influx2', include_port=False)
                 ssl = boolcheck(env.get('VRKN_INFLUXDB2_SSL', self.config.get('influx2', 'ssl')))
                 verify_ssl = boolcheck(env.get('VRKN_INFLUXDB2_VERIFY_SSL', self.config.get('influx2', 'verify_ssl')))
 
