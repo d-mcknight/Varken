@@ -39,11 +39,10 @@ class InfluxDB2Manager(object):
             self.logger.error('Failed creating new InfluxDB bucket! Error: %s', e)
 
     def write_points(self, data):
-        d = data
-        self.logger.info('Writing Data to InfluxDBv2 %s', d)
+        self.logger.info('Writing Data to InfluxDBv2 %s', data)
 
         try:
-            self.influx_write_api.write(bucket=self.server.bucket, record=d)
+            self.influx_write_api.write(bucket=self.server.bucket, record=data)
         except Exception as e:
-            self.logger.error('Error writing data to influxdb2. Dropping this set of data. '
-                              'Check your database! Error: %s', e)
+            self.logger.exception('Error writing data to influxdb2. Dropping this set of data. '
+                                  'Check your database! Error: %s', e)
