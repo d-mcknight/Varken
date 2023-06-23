@@ -107,6 +107,7 @@ class INIParser(object):
 
         valid = match(regex, url_check) is not None
         if not valid:
+            return url_check
             if inc_port:
                 self.logger.error('%s is invalid in module [%s]! URL must host/IP and '
                                   'port if not 80 or 443. ie. localhost:8080',
